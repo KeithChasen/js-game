@@ -12,8 +12,8 @@ class Overworld {
         };
         image.src = "/images/maps/DemoLower.png";
 
-        const x = 0;
-        const y = 0;
+        const x = 1;
+        const y = 4;
         const hero = new Image();
         hero.onload = () => {
             this.ctx.drawImage(
@@ -22,8 +22,8 @@ class Overworld {
                 0, // top start picture coordinate
                 32, // width to take
                 32, // height to take
-                x, // where to place image on canvas left
-                y, // where to place image on canvas top
+                x * 16 - 8, // where to place image on canvas left // 16 - dimension of single square of a map (one step)
+                y * 16 - 18, // --/-- top // 8, 18 - single character square is 32x32 so to put it to 16x16 sqr need to subtract those
                 32, // width of the image to use
                 32 // height of the image to use
             )
