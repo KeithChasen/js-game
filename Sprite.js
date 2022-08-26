@@ -17,15 +17,22 @@ class Sprite {
         }
 
         // Configure Animation and Initial State
-        this.animation = config.animation || {
-            idleDown: [
-                [0,0]
-            ]
+        this.animations = config.animations || {
+            'idle-down': [ [0,0] ],
+            'walk-down': [ [1,0], [0,0], [3,0], [1,0] ],
         }
-        this.currentAnimation = config.currentAnimation || "idleDown";
+        // this.currentAnimation = config.currentAnimation || 'idle-down';
+        this.currentAnimation = 'walk-down';
         this.currentAnimationFrame = 0;
 
+        this.animationFrameLimit = config.animationFrameLimit || 16;
+        this.animationFrameProgress = config.animationFrameLimit || 16;
+
         this.gameObject = config.gameObject;
+    }
+
+    get frame() {
+        return this.animations[this.currentAnimation][this.currentAnimationFrame];
     }
 
     draw(ctx) {
@@ -34,8 +41,10 @@ class Sprite {
 
         this.isShadowLoaded && ctx.drawImage(this.shadow, x, y);
 
+        const [frameX, frameY] = this.frame;
+
         this.isLoaded && ctx.drawImage(this.image,
-            0,0,
+            frameX * 32, frameY * 32,
             32,32,
             x,y,
             32,32
