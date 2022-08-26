@@ -25,6 +25,7 @@ class Sprite {
         this.currentAnimation = 'walk-down';
         this.currentAnimationFrame = 0;
 
+        // basically speed of changing frames
         this.animationFrameLimit = config.animationFrameLimit || 16;
         this.animationFrameProgress = config.animationFrameLimit || 16;
 
@@ -37,6 +38,8 @@ class Sprite {
 
     updateAnimationProgress() {
         //downtick frame progress
+        // decrease value until it's ZERO
+        // only when ZERO -> go next reset counter
         if (this.animationFrameProgress > 0) {
             this.animationFrameProgress -= 1;
             return;

@@ -27,7 +27,6 @@ class DirectionInput {
             if (dir && this.heldDirections.indexOf(dir) === -1) {
                 // put it in first place in array
                 this.heldDirections.unshift(dir);
-                console.log(this.heldDirections, 'heldDirections')
             }
         });
 
@@ -36,7 +35,6 @@ class DirectionInput {
             const index = this.heldDirections.indexOf(dir);
             if (index > -1) {
                 this.heldDirections.splice(index, 1);
-                console.log(this.heldDirections, 'heldDirections')
             }
         });
     }
