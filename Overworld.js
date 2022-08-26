@@ -8,7 +8,11 @@ class Overworld {
 
     startGameLoop() {
         const step = () => {
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+            // establish camera person
+            const cameraObject = this.map.gameObjects.hero;
+
             // lower layer
             this.map.drawLowerImage(this.ctx);
 
@@ -17,7 +21,7 @@ class Overworld {
                 object.update({
                     arrow: this.directionInput.getDirection()
                 });
-                object.sprite.draw(this.ctx)
+                object.sprite.draw(this.ctx, cameraObject);
             });
 
             // upper layer
