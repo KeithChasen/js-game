@@ -19,7 +19,7 @@ class Sprite {
         // Configure Animation and Initial State
         this.animations = config.animations || {
             'idle-down': [ [0,0] ],
-            'walk-down': [ [1,0], [0,0], [3,0], [1,0] ],
+            'walk-down': [ [1,0], [0,0], [3,0], [0,0] ],
         }
         // this.currentAnimation = config.currentAnimation || 'idle-down';
         this.currentAnimation = 'walk-down';
@@ -33,6 +33,22 @@ class Sprite {
 
     get frame() {
         return this.animations[this.currentAnimation][this.currentAnimationFrame];
+    }
+
+    updateAnimationProgress() {
+        //downtick frame progress
+        if (this.animationFrameProgress > 0) {
+            this.animationFrameProgress -= 1;
+            return;
+        }
+
+        // reset the counter
+        this.animationFrameProgress = this.animationFrameLimit;
+        this.currentAnimationFrame += 1;
+
+        if (this.frame === undefined) {
+            this.currentAnimationFrame = 0;
+        }
     }
 
     draw(ctx) {
@@ -49,5 +65,7 @@ class Sprite {
             x,y,
             32,32
         );
+
+        this.updateAnimationProgress();
     }
 }
