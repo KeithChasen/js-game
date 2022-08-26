@@ -14,6 +14,12 @@ class DirectionInput {
         };
     }
 
+    // returns first direction key because we care only about last clicked key
+    // and it put to 0 index
+    getDirection() {
+        return this.heldDirections[0];
+    }
+
     init() {
         document.addEventListener('keydown', e => {
             const dir = this.map[e.code];

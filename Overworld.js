@@ -15,7 +15,7 @@ class Overworld {
             //game objects
             Object.values(this.map.gameObjects).forEach(object => {
                 object.update({
-
+                    arrow: this.directionInput.getDirection()
                 });
                 object.sprite.draw(this.ctx)
             });
