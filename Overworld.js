@@ -14,7 +14,7 @@ class Overworld {
 
             //game objects
             Object.values(this.map.gameObjects).forEach(object => {
-                object.x += 0.01;
+                object.x += 1;
                 object.sprite.draw(this.ctx)
             });
 
