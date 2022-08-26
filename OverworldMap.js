@@ -25,7 +25,8 @@ window.OverworldMaps = {
         gameObjects: {
             hero: new Person({
                 x: utils.withGrid(5),
-                y: utils.withGrid(6)
+                y: utils.withGrid(6),
+                isPlayerControlled: true
             })
         }
     },
@@ -36,7 +37,8 @@ window.OverworldMaps = {
         gameObjects: {
             hero: new Person({
                 x: utils.withGrid(3),
-                y: utils.withGrid(5)
+                y: utils.withGrid(5),
+                isPlayerControlled: true
             }),
             npcA: new Person({
                 x: utils.withGrid(9),
