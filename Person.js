@@ -37,7 +37,10 @@ class Person extends GameObject {
             if (state.map.isSpaceTaken(this.x, this.y, this.direction)) {
                 return;
             }
-            // otherwise walk
+            // otherwise, walk
+            // move wall to the place we're going to go
+            // wall in this case is the HERO's place (place occupied)
+            state.map.moveWall(this.x, this.y, this.direction);
             this.movingProgressRemaining = 16;
         }
     }
