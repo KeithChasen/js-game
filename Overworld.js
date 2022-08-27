@@ -16,7 +16,8 @@ class Overworld {
             // update all objects
             Object.values(this.map.gameObjects).forEach(object => {
                 object.update({
-                    arrow: this.directionInput.getDirection()
+                    arrow: this.directionInput.getDirection(),
+                    map: this.map
                 });
             });
 
@@ -38,7 +39,10 @@ class Overworld {
     }
 
     init() {
-        this.map = new OverworldMap(window.OverworldMaps.Kitchen);
+        this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
+
+        console.log(this.map.walls, 'walls')
+
         this.directionInput = new DirectionInput();
         this.directionInput.init();
         this.startGameLoop();
